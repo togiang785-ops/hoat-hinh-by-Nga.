@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anime Winter - Bích Nga</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: #10152f;
+}
+
+.scene {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(
+        to bottom,
+        #10142f 0%,
+        #263c68 45%,
+        #879db8 75%,
+        #d7e7f4 100%
+    );
+}
+
+/* MẶT TRĂNG */
+
+.moon {
+    position: absolute;
+    top: 9%;
+    right: 15%;
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    background: #fff9df;
+    box-shadow:
+        0 0 25px #fff,
+        0 0 65px #ffe9a9,
+        0 0 110px #d5dfff;
+    animation: moonGlow 4s infinite alternate;
+}
+
+@keyframes moonGlow {
+    from { box-shadow: 0 0 20px #fff, 0 0 50px #ffe9a9; }
+    to { box-shadow: 0 0 45px #fff, 0 0 100px #ffe9a9; }
+}
+
+/* SAO */
+
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 8px white;
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+    from { opacity: .2; transform: scale(.6); }
+    to { opacity: 1; transform: scale(1.7); }
+}
+
+/* SAO BĂNG */
+
+.shooting-star {
+    position: absolute;
+    top: 15%;
+    left: -100px;
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, white);
+    transform: rotate(-25deg);
+    animation: shooting 8s linear infinite;
+    animation-delay: 3s;
+}
+
+@keyframes shooting {
+    0%, 75% { left: -100px; top: 10%; opacity: 0; }
+    78% { opacity: 1; }
+    90% { left: 110%; top: 35%; opacity: 0; }
+    100% { left: 110%; opacity: 0; }
+}
+
+/* MÂY */
+
+.cloud {
+    position: absolute;
+    font-size: 65px;
+    opacity: .45;
+    animation: cloudMove 35s linear infinite;
+}
+
+.cloud1 { top: 17%; left: -100px; }
+.cloud2 { top: 30%; left: -200px; animation-duration: 48s; }
+.cloud3 { top: 10%; left: -300px; animation-duration: 60s; }
+
+@keyframes cloudMove {
+    from { transform: translateX(0); }
+    to { transform: translateX(130vw); }
+}
+
+/* NÚI XA */
+
+.mountain {
+    position: absolute;
+    bottom: 30%;
+    width: 0;
+    height: 0;
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-bottom: 190px solid #455b7d;
+}
+
+.mountain::after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: -48px;
+    width: 0;
+    height: 0;
+    border-left: 48px solid transparent;
+    border-right: 48px solid transparent;
+    border-bottom: 65px solid #e5f1ff;
+}
+
+.m1 { left: 5%; }
+.m2 { left: 32%; transform: scale(1.3); }
+.m3 { right: 0; transform: scale(1.1); }
+
+/* THÀNH PHỐ */
+
+.city {
+    position: absolute;
+    bottom: 28%;
+    width: 100%;
+    height: 190px;
+    display: flex;
+    align-items: end;
+    justify-content: space-around;
+}
+
+.building {
+ position: relative;
+    width: 12%;
+    height: 130px;
+    background: linear-gradient(90deg, #182844, #304c6e);
+    border: 2px solid #405879;
+    box-shadow: 0 0 20px #14213b;
+}
+
+.building:nth-child(2) { height: 175px; }
+.building:nth-child(3) { height: 110px; }
+.building:nth-child(4) { height: 155px; }
+.building:nth-child(5) { height: 120px; }
+.building:nth-child(6) { height: 180px; }
+.building:nth-child(7) { height: 140px; }
+
+.windows {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 15px 8px;
+}
+
+.window {
+    height: 13px;
+    background: #ffe8a1;
+    box-shadow: 0 0 10px #ffe8a1;
+    animation: windowBlink 4s infinite alternate;
+}
+
+.window:nth-child(2n) {
+    animation-delay: 2s;
+}
+
+@keyframes windowBlink {
+    from { opacity: .3; }
+    to { opacity: 1; }
+}
+
+/* CÂY */
+
+.tree {
+    position: absolute;
+    bottom: 28%;
+    font-size: 100px;
+    transform-origin: bottom;
+    animation: treeSwing 4s ease-in-out infinite alternate;
+}
+
+.tree1 { left: 3%; }
+.tree2 { right: 4%; animation-delay: 1s; }
+
+@keyframes treeSwing {
+    from { transform: rotate(-3deg); }
+    to { transform: rotate(3deg); }
+}
+
+/* ĐƯỜNG PHỐ */
+
+.sidewalk {
+    position: absolute;
+    bottom: 16%;
+    width: 100%;
+    height: 12%;
+    background: linear-gradient(#b7c8da, #849cb5);
+    border-top: 3px solid #e9f5ff;
+}
+
+.road {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 17%;
+    background: linear-gradient(#252d40, #111725);
+    border-top: 4px solid #d9e9f5;
+}
+
+.road::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 4px;
+    background: repeating-linear-gradient(
+        90deg,
+        #f8e6ad 0 50px,
+        transparent 50px 100px
+    );
+}
+
+/* ĐÈN ĐƯỜNG */
+
+.lamp {
+    position: absolute;
+    bottom: 28%;
+    left: 22%;
+    width: 7px;
+    height: 180px;
+    background: #27364b;
+    border-radius: 5px;
+}
+
+.lamp::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -19px;
+    width: 45px;
+    height: 12px;
+    border-radius: 10px;
+    background: #fff4b7;
+    box-shadow: 0 0 20px 10px #ffe9a0;
+    animation: lampBlink 2s infinite alternate;
+}
+
+@keyframes lampBlink {
+    from { opacity: .6; }
+    to { opacity: 1; }
+}
+
+.lamp2 {
+    left: 78%;
+    transform: scale(.8);
+}
+
+/* XE Ô TÔ */
+
+.car {
+    position: absolute;
+    bottom: 5%;
+    left: -180px;
+    font-size: 65px;
+    z-index: 5;
+    animation: carMove 12s linear infinite;
+    filter: drop-shadow(0 0 8px #ffdf9b);
+}
+
+@keyframes carMove {
+    from { left: -180px; }
+    to { left: 115%; }
+}
+
+/* NGƯỜI ĐI BỘ */
+
+.person {
+    position: absolute;
+    bottom: 15%;
+    left: 60%;
+    font-size: 40px;
+    z-index: 6;
+    animation: walking 9s linear infinite;
+}
+
+@keyframes walking {
+    from { left: 110%; }
+    to { left: -10%; }
+}
+
+/* BƯỚM VÀ CHIM */
+
+.butterfly {
+    position: absolute;
+    top: 45%;
+    left: -50px;
+    font-size: 25px;
+  animation: butterflyFly 15s linear infinite;
+}
+
+@keyframes butterflyFly {
+    0% { left: -50px; top: 55%; }
+    25% { top: 40%; }
+    50% { top: 50%; }
+    75% { top: 35%; }
+    100% { left: 110%; top: 45%; }
+}
+
+.bird {
+    position: absolute;
+    top: 25%;
+    left: -100px;
+    font-size: 25px;
+    animation: birdFly 20s linear infinite;
+}
+
+@keyframes birdFly {
+    from { left: -100px; }
+    to { left: 110%; }
+}
+
+/* HOA ANH ĐÀO */
+
+.flower {
+    position: absolute;
+    top: -40px;
+    font-size: 23px;
+    animation: flowerFall linear infinite;
+}
+
+@keyframes flowerFall {
+    0% {
+        transform: translate(0, -30px) rotate(0);
+        opacity: 0;
+    }
+    15% { opacity: 1; }
+    100% {
+        transform: translate(100px, 110vh) rotate(700deg);
+        opacity: 0;
+    }
+}
+
+/* TUYẾT */
+
+.snow {
+    position: absolute;
+    top: -20px;
+    color: white;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 8px #fff;
+    animation: snowFall linear infinite;
+}
+
+@keyframes snowFall {
+    0% {
+        transform: translate(0, -20px);
+        opacity: 0;
+    }
+    15% { opacity: .9; }
+    100% {
+        transform: translate(120px, 110vh);
+        opacity: .2;
+    }
+}
+
+/* ÁNH SÁNG */
+
+.glow {
+    position: absolute;
+    bottom: 17%;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(
+        transparent,
+        rgba(186, 216, 255, .12),
+        transparent
+    );
+}
+
+/* CHỮ KÝ */
+
+.signature {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 17px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px #ff9ecb, 0 0 20px #fff;
+    z-index: 20;
+    animation: signatureGlow 3s infinite alternate;
+}
+
+@keyframes signatureGlow {
+    from { opacity: .6; }
+    to { opacity: 1; text-shadow: 0 0 20px #ff9ecb; }
+}
+
+/* LỜI CHÀO */
+
+.message {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    width: 90%;
+    z-index: 10;
+    text-shadow: 0 0 15px #b8dfff;
+    animation: messageAppear 3s ease;
+}
+
+.message h1 {
+    font-size: clamp(25px, 5vw, 48px);
+    letter-spacing: 4px;
+}
+
+.message p {
+    margin-top: 15px;
+    font-size: 17px;
+    letter-spacing: 2px;
+}
+
+@keyframes messageAppear {
+    from { opacity: 0; transform: translate(-50%, -30%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+/* ÁNH SÁNG TRÊN MÀN HÌNH */
+
+.vignette {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+        transparent 40%,
+        rgba(5, 10, 30, .35)
+    );
+    z-index: 15;
+}
+
+@media(max-width:600px) {
+    .moon { width: 60px; height: 60px; }
+    .building { width: 13%; }
+    .tree { font-size: 65px; }
+    .lamp { height: 120px; }
+    .message p { font-size: 13px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="scene">
+
+    <div class="moon"></div>
+
+    <div class="shooting-star"></div>
+
+    <div class="cloud cloud1">☁️</div>
+    <div class="cloud cloud2">☁️</div>
+    <div class="cloud cloud3">☁️</div>
+
+    <div class="mountain m1"></div>
+    <div class="mountain m2"></div>
+    <div class="mountain m3"></div>
+
+    <!-- THÀNH PHỐ -->
+    <div class="city">
+        <div class="building"><div class="windows">
+            <div class="window"></div><div class="window"></div>
+            <div class="window"></div><div class="window"></div>
+            <div class="window"></div><div class="window"></div>
+        </div></div>
+
+        <div class="building"><div class="windows">
+            <div class="window"></div><div class="window"></div>
+            <div class="window"></div><div class="window"></div>
+            <div class="window"></div><div class="window"></div>
+        </div></div>
+
+        <div class="building"><div class="windows">
+            <div class="window"></div><div class="window"></div>
+            <div class="window"></div><div class="window"></div>
+            <div class="window"></div><div class="window"></div>
+        </div></div>
+
+        <div class="building"><div class="windows">
+            <div c
